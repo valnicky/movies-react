@@ -1,11 +1,25 @@
-import logo from './logo.svg';
+import Form from './components/Form';
 import './App.css';
 
-function App() {
+const movies = [{
+  name: 'Avengers',
+  available: 5,
+},
+{
+  name: 'Terminator',
+  available: 3,
+}];
+
+
+export default function App() {
     return ( <div className = "App" >
         <h1 > Movies </h1> 
+        {movies.map(
+          (movie) => 
+          (<Form {...movie}/>)
+        )}
         </div>
     );
 }
 
-export default App;
+ 
