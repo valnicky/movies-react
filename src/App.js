@@ -5,21 +5,28 @@ import TodoList from './components/TodoList';
 import TodoItem from './components/TodoItem';
 import TodoSearch from './components/TodoSearch';
 import CreateTodoButton from './components/CreateTodoButton';
-
+import React from 'react';
 
 const movies = [{
         name: 'Avengers',
         available: 5,
+        completed: false
     },
     {
         name: 'Terminator',
         available: 3,
+         completed: false
+    },
+    {
+      name: 'Casablanca',
+      available: 4,
+      completed: false
     }
 ];
 
 
 export default function App() {
-    return ( < div className = "App" >
+    return ( <React.Fragment>
         <h1 > Movies </h1>  {
         movies.map(
             (movie) =>
@@ -28,9 +35,13 @@ export default function App() {
         }
 
         <TodoCounter />
-        < TodoSearch />
-        < TodoList >
-        <TodoItem />
-        </TodoList> </div >
+        <TodoSearch />
+        <TodoList >
+        {movies.map((movie) => (
+          <TodoItem key={movie.name}  name = {movie.name}/>
+        ))}
+        </TodoList> 
+        <CreateTodoButton/>
+      </React.Fragment>
     );
 }
