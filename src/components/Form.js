@@ -9,11 +9,11 @@ export default function Form(props) {
             <h2>{movie.name}</h2>
             <button type="button" onClick={
                 () => { setQuantity(quantity - 1)}
-            }>-</button>
+            } disabled={quantity <= 0 }>-</button>
           {quantity}
             <button type="button" onClick={() => {
               setQuantity(quantity+1)
-          }}>+</button>
+          }} disabled={ quantity >= movie.available}>+</button>
           </form>
     );
 }
